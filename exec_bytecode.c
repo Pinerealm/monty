@@ -13,7 +13,7 @@ void exec_bcode(stack_t **stack, unsigned int *line_number, char *token)
 	int i;
 	instruction_t opcodes[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint},
-		{"pop", pop}, {NULL, NULL}
+		{"pop", pop}, {"swap", swap}, {NULL, NULL}
 	};
 
 	for (i = 0; opcodes[i].opcode != NULL; i++)
