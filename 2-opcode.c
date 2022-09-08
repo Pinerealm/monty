@@ -1,4 +1,5 @@
 #include "monty.h"
+#include <stdio.h>
 
 /**
  * mod - computes the rest of the division of the second top element of the
@@ -49,4 +50,33 @@ void pchar(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	printf("%c\n", (*stack)->n);
+}
+
+/**
+ * pstr - prints the string starting at the top of the stack
+ *
+ * @stack: the stack address
+ * @line_number: the current line number
+ *
+ * Return: void
+ */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+
+	(void)line_number;
+	if (stack == NULL || *stack == NULL)
+	{
+		printf("\n");
+		return;
+	}
+	tmp = *stack;
+	while (tmp != NULL)
+	{
+		if (tmp->n <= 0 || tmp->n > 127)
+			break;
+		printf("%c", tmp->n);
+		tmp = tmp->next;
+	}
+	printf("\n");
 }

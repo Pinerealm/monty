@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/types.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -53,9 +54,11 @@ void mul(stack_t **, unsigned int);
 void mod(stack_t **, unsigned int);
 void pchar(stack_t **, unsigned int);
 
+void pstr(stack_t **, unsigned int);
+
 int is_number(char *str);
 void free_stack(stack_t *stack);
 void exec_bcode(stack_t **stack, unsigned int *line_number, char *token);
-
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 
 #endif /* MONTY_H */
