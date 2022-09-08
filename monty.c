@@ -14,11 +14,8 @@ int main(int argc, char *argv[])
 	char *line = NULL, *token;
 	size_t len = 0;
 	ssize_t read;
-	unsigned int line_number = 0, i;
+	unsigned int line_number = 0;
 	stack_t *stack = NULL;
-	instruction_t opcodes[] = {
-		{"push", push}, {"pall", pall}, {NULL, NULL}
-	};
 
 	if (argc != 2)
 	{
@@ -38,23 +35,7 @@ int main(int argc, char *argv[])
 		token = strtok(line, " \n\t");
 		if (token == NULL || token[0] == '#')
 			continue;
-		for (i = 0; opcodes[i].opcode != NULL; i++)
-		{
-			if (strcmp(token, opcodes[i].opcode) == 0)
-			{
-				opcodes[i].f(&stack, line_number);
-				break;
-			}
-		}
-		if (opcodes[i].opcode == NULL)
-		{
-			fprintf(stderr, "L%d: ", line_number);
-			fprintf(stderr, "unknown instruction %s\n", token);
-			free_stack(stack);
-			free(line);
-			fclose(fp);
-			exit(EXIT_FAILURE);
-		}
+		exec_bcode(&stack, &line_number, token);
 	}
 	free_stack(stack);
 	free(line);
