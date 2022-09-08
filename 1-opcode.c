@@ -27,7 +27,7 @@ void add(stack_t **stack, unsigned int line_number)
  *
  * @stack: the stack address
  * @line_number: the current line number
- * 
+ *
  * Return: void
  */
 void nop(stack_t **stack, unsigned int line_number)
@@ -55,5 +55,32 @@ void sub(stack_t **stack, unsigned int line_number)
 	}
 	tmp = (*stack)->next;
 	tmp->n -= (*stack)->n;
+	pop(stack, line_number);
+}
+
+/**
+ * div - divides the second top element of the stack by the top element
+ *
+ * @stack: the stack address
+ * @line_number: the current line number
+ *
+ * Return: void
+ */
+void div(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n == 0)
+	{
+		fprintf(stderr, "L%d: division by zero\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	tmp = (*stack)->next;
+	tmp->n /= (*stack)->n;
 	pop(stack, line_number);
 }

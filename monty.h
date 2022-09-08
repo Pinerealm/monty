@@ -48,6 +48,8 @@ void add(stack_t **, unsigned int);
 void nop(stack_t **, unsigned int);
 void sub(stack_t **, unsigned int);
 
+void div(stack_t **, unsigned int);
+
 int is_number(char *str);
 void free_stack(stack_t *stack);
 void exec_bcode(stack_t **stack, unsigned int *line_number, char *token);
