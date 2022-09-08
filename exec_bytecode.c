@@ -12,8 +12,7 @@ void exec_bcode(stack_t **stack, unsigned int *line_number, char *token)
 {
 	int i;
 	instruction_t opcodes[] = {
-		{"push", push},
-		{"pall", pall},
+		{"push", push}, {"pall", pall}, {"pint", pint},
 		{NULL, NULL}
 	};
 
