@@ -50,6 +50,7 @@ void sub(stack_t **, unsigned int);
 
 void _div(stack_t **, unsigned int);
 void mul(stack_t **, unsigned int);
+void mod(stack_t **, unsigned int);
 
 int is_number(char *str);
 void free_stack(stack_t *stack);
