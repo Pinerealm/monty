@@ -14,7 +14,7 @@ void exec_bcode(stack_t **stack, unsigned int *line_number, char *token)
 	instruction_t opcodes[] = {
 		{"push", push}, {"pall", pall}, {"pint", pint},
 		{"pop", pop}, {"swap", swap}, {"add", add},
-		{"nop", nop}, {NULL, NULL}
+		{"nop", nop}, {"sub", sub}, {NULL, NULL}
 	};
 
 	for (i = 0; opcodes[i].opcode != NULL; i++)

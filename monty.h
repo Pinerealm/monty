@@ -39,13 +39,14 @@ extern char *token;
 
 /* FUNCTION PROTOTYPES */
 void push(stack_t **stack, unsigned int line_number);
-void pall(stack_t **stack, unsigned int line_number);
-void pint(stack_t **stack, unsigned int line_number);
-void pop(stack_t **stack, unsigned int line_number);
+void pall(stack_t **, unsigned int);
+void pint(stack_t **, unsigned int);
+void pop(stack_t **, unsigned int);
 
 void swap(stack_t **stack, unsigned int line_number);
-void add(stack_t **stack, unsigned int line_number);
-void nop(stack_t **stack, unsigned int line_number);
+void add(stack_t **, unsigned int);
+void nop(stack_t **, unsigned int);
+void sub(stack_t **, unsigned int);
 
 int is_number(char *str);
 void free_stack(stack_t *stack);
