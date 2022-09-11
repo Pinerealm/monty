@@ -55,6 +55,7 @@ void mod(stack_t **, unsigned int);
 void pchar(stack_t **, unsigned int);
 
 void pstr(stack_t **, unsigned int);
+void rotl(stack_t **, unsigned int);
 
 int is_number(char *str);
 void free_stack(stack_t *stack);
