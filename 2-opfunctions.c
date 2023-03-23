@@ -75,3 +75,26 @@ void pstr(stack_t **stack, unsigned int line_number)
 	}
 	printf("\n");
 }
+
+/**
+ * rotl - make the top element of the stack the last one, and the second
+ * top element of the stack the first one
+ * @stack: pointer to the stack
+ * @line_number: the current line number
+ */
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+
+	(void)line_number;
+	if (!stack || !(*stack) || !(*stack)->next)
+		return;
+	tmp = *stack;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = *stack;
+	(*stack)->prev = tmp;
+	*stack = (*stack)->next;
+	(*stack)->prev->next = NULL;
+	(*stack)->prev = NULL;
+}
