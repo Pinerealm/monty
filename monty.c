@@ -37,9 +37,7 @@ int main(int argc, char **argv)
 			continue;
 		exec_opcode(&stack, &line_number, token);
 	}
-	free(line);
-	free_stack(stack);
-	fclose(fp);
+	cleanup(stack);
 
 	return (EXIT_SUCCESS);
 }
