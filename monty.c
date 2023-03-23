@@ -1,4 +1,5 @@
 #include "monty.h"
+global_t g = {"stack", NULL, NULL};
 
 /**
  * main - Entry point
@@ -10,7 +11,6 @@
  */
 int main(int argc, char **argv)
 {
-	FILE *fp;
 	char *token;
 	ssize_t read;
 	size_t len = 0;
@@ -22,24 +22,22 @@ int main(int argc, char **argv)
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	fp = fopen(argv[1], "r");
-	if (fp == NULL)
+	g.file = fopen(argv[1], "r");
+	if (g.file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 
-	while ((read = getline(&line, &len, fp)) != -1)
+	while ((read = getline(&g.line, &len, g.file)) != -1)
 	{
 		line_number++;
-		token = strtok(line, " \n\t");
+		token = strtok(g.line, " \n\t");
 		if (token == NULL || token[0] == '#')
 			continue;
 		exec_opcode(&stack, &line_number, token);
 	}
-	free(line);
-	free_stack(stack);
-	fclose(fp);
+	cleanup(stack);
 
 	return (EXIT_SUCCESS);
 }

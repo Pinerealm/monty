@@ -23,8 +23,7 @@ void exec_opcode(stack_t **stack, unsigned int *line_number, char *opcode)
 		}
 	}
 	fprintf(stderr, "L%d: unknown instruction %s\n", *line_number, opcode);
-	free_stack(*stack);
-	free(line);
+	cleanup(*stack);
 
 	exit(EXIT_FAILURE);
 }

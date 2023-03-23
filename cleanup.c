@@ -1,12 +1,12 @@
 #include "monty.h"
 
 /**
- * free_stack - frees a stack_t stack
+ * cleanup - frees a stack_t stack
  * @stack: the stack
  *
  * Return: void
  */
-void free_stack(stack_t *stack)
+void cleanup(stack_t *stack)
 {
 	stack_t *tmp;
 
@@ -16,4 +16,6 @@ void free_stack(stack_t *stack)
 		stack = stack->next;
 		free(tmp);
 	}
+	free(g.line);
+	fclose(g.file);
 }
