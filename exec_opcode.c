@@ -9,7 +9,7 @@
 void exec_opcode(stack_t **stack, unsigned int *line_number, char *opcode)
 {
 	instruction_t opcodes[] = {
-		{"push", push}, {"pall", pall}, {"pint", pint},
+		{"push", push}, {"pall", pall}, {"pint", pint}, {"pop", pop},
 		{NULL, NULL}
 	};
 	int i;
