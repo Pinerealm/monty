@@ -75,6 +75,11 @@ void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
 
+void set_as_stack(stack_t **stack, unsigned int line_number);
+void set_as_queue(stack_t **stack, unsigned int line_number);
+void stack_push(stack_t **stack, stack_t *new);
+void queue_push(stack_t **stack, stack_t *new);
+
 void cleanup(stack_t *stack);
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 int is_number(char *str);

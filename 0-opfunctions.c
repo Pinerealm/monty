@@ -31,11 +31,10 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	n = atoi(token);
 	new->n = n;
-	new->prev = NULL;
-	new->next = *stack;
-	if (*stack)
-		(*stack)->prev = new;
-	*stack = new;
+	if (strcmp(g.stack_format, "stack") == 0)
+		stack_push(stack, new);
+	else
+		queue_push(stack, new);
 }
 
 /**
