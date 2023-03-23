@@ -36,16 +36,31 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/**
+ * struct global_s - global variables
+ * @stack_format: the stack format
+ * @file: the file pointer
+ * @line: the current line being read
+ *
+ * Description: struct to hold global variables
+ */
+typedef struct global_s
+{
+	char *stack_format;
+	FILE *file;
+	char *line;
+} global_t;
+
 /* Global variables */
-char *line;
+extern global_t g;
 
 /* Function prototypes */
 void exec_opcode(stack_t **stack, unsigned int *line_number, char *opcode);
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
-void free_stack(stack_t *stack);
 void pint(stack_t **stack, unsigned int line_number);
 
+void free_stack(stack_t *stack);
 ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 int is_number(char *str);
 
