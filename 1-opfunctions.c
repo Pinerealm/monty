@@ -82,3 +82,25 @@ void divide(stack_t **stack, unsigned int line_number)
 	free((*stack)->prev);
 	(*stack)->prev = NULL;
 }
+
+/**
+ * mul - divides the second top element by the top element of the stack
+ * @stack: pointer to the stack
+ * @line_number: the current line number
+ */
+void mul(stack_t **stack, unsigned int line_number)
+{
+	stack_t *tmp;
+
+	if (!stack || !(*stack) || !(*stack)->next)
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+		cleanup(*stack);
+		exit(EXIT_FAILURE);
+	}
+	tmp = (*stack)->next;
+	tmp->n *= (*stack)->n;
+	*stack = tmp;
+	free((*stack)->prev);
+	(*stack)->prev = NULL;
+}
