@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 		line_number++;
 		token = strtok(g.line, " \n\t");
 		if (token == NULL || token[0] == '#')
-			continue;
+			token = "nop";
 		exec_opcode(&stack, &line_number, token);
 	}
 	cleanup(stack);
