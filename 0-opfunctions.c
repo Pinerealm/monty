@@ -105,7 +105,7 @@ void pop(stack_t **stack, unsigned int line_number)
  */
 void swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *tmp;
+	stack_t *first, *second;
 
 	if (!stack || !(*stack) || !(*stack)->next)
 	{
@@ -113,12 +113,14 @@ void swap(stack_t **stack, unsigned int line_number)
 		cleanup(*stack);
 		exit(EXIT_FAILURE);
 	}
-	tmp = (*stack)->next;
-	(*stack)->next = tmp->next;
-	if (tmp->next)
-		tmp->next->prev = *stack;
-	tmp->prev = (*stack)->prev;
-	(*stack)->prev = tmp;
-	tmp->next = *stack;
-	*stack = tmp;
+	first = *stack;
+	second = (*stack)->next;
+
+	first->next = second->next;
+	first->prev = second;
+	if (second->next)
+		second->next->prev = first;
+	second->next = first;
+	second->prev = NULL;
+	*stack = second;
 }

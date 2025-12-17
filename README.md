@@ -1,1 +1,1 @@
-# The Monty Scripting Language
+# The Monty Interpreter
