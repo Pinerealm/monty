@@ -26,8 +26,5 @@ void exec_opcode(stack_t **stack, unsigned int *line_number, char *opcode)
 			return;
 		}
 	}
-	fprintf(stderr, "L%d: unknown instruction %s\n", *line_number, opcode);
-	cleanup(*stack);
-
-	exit(EXIT_FAILURE);
+	err(stack, "L%d: unknown instruction %s\n", *line_number, opcode);
 }

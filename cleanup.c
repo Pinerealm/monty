@@ -10,12 +10,13 @@ void cleanup(stack_t *stack)
 {
 	stack_t *tmp;
 
-	while (stack != NULL)
+	while (stack)
 	{
 		tmp = stack;
 		stack = stack->next;
 		free(tmp);
 	}
 	free(g.line);
-	fclose(g.file);
+	if (g.file)
+		fclose(g.file);
 }

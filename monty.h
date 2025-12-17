@@ -54,34 +54,45 @@ typedef struct global_s
 /* Global variables */
 extern global_t g;
 
-/* Function prototypes */
+/* exec_opcode.c */
 void exec_opcode(stack_t **stack, unsigned int *line_number, char *opcode);
+
+/* 0-opfunctions.c */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
-
 void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
+
+/* 1-opfunctions.c */
 void add(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
-
 void sub(stack_t **stack, unsigned int line_number);
 void divide(stack_t **stack, unsigned int line_number);
 void mul(stack_t **stack, unsigned int line_number);
-void mod(stack_t **stack, unsigned int line_number);
 
+/* 2-opfunctions.c */
+void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
 
+/* 3-opfunctions.c */
 void set_as_stack(stack_t **stack, unsigned int line_number);
 void set_as_queue(stack_t **stack, unsigned int line_number);
+
+/* push_helper.c */
 void stack_push(stack_t **stack, stack_t *new);
 void queue_push(stack_t **stack, stack_t *new);
 
+/* cleanup.c */
 void cleanup(stack_t *stack);
-ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+
+/* errors.c */
+void err(stack_t **stack, const char *fmt, ...);
+
+/* is_number.c */
 int is_number(char *str);
 
 #endif /* MONTY_H */
